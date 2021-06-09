@@ -40,6 +40,9 @@ local custom_repairable = {}
 function workbench:register_repairable(item)
 	custom_repairable[item] = true
 end
+-- xdecor compat
+if not core.global_exists("xdecor") then xdecor = {} end
+xdecor.register_repairable = workbench.register_repairable
 
 -- Tools allowed to be repaired
 function workbench:repairable(stack)
