@@ -1,5 +1,5 @@
 -- Returns the greatest numeric key in a table.
-function xdecor.maxn(T)
+function workbench.maxn(T)
 	local n = 0
 	for k in pairs(T) do
 		if k > n then
@@ -11,7 +11,7 @@ function xdecor.maxn(T)
 end
 
 -- Returns the length of an hash table.
-function xdecor.tablelen(T)
+function workbench.tablelen(T)
 	local n = 0
 
 	for _ in pairs(T) do
@@ -22,7 +22,7 @@ function xdecor.tablelen(T)
 end
 
 -- Deep copy of a table. Borrowed from mesecons mod (https://github.com/Jeija/minetest-mod-mesecons).
-function xdecor.tablecopy(T)
+function workbench.tablecopy(T)
 	if type(T) ~= "table" then
 		return T -- No need to copy.
 	end
@@ -31,7 +31,7 @@ function xdecor.tablecopy(T)
 
 	for k, v in pairs(T) do
 		if type(v) == "table" then
-			new[k] = xdecor.tablecopy(v)
+			new[k] = workbench.tablecopy(v)
 		else
 			new[k] = v
 		end
@@ -40,7 +40,7 @@ function xdecor.tablecopy(T)
 	return new
 end
 
-function xdecor.stairs_valid_def(def)
+function workbench.stairs_valid_def(def)
 	return (def.drawtype == "normal" or def.drawtype:sub(1,5) == "glass") and
 	       (def.groups.cracky or def.groups.choppy) and
 		not def.on_construct and

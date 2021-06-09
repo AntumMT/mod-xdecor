@@ -76,7 +76,7 @@ local function xdecor_stairs_alternative(nodename, def)
 		end
 	end
 
-function xdecor.register(name, def)
+function workbench.register(name, def)
 	def.drawtype = def.drawtype or (def.mesh and "mesh") or (def.node_box and "nodebox")
 	def.sounds = def.sounds or default.node_sound_defaults()
 
@@ -124,14 +124,14 @@ function xdecor.register(name, def)
 		end
 	end
 
-	minetest.register_node("xdecor:" .. name, def)
+	minetest.register_node("workbench:" .. name, def)
 
 	local workbench = minetest.settings:get_bool("enable_xdecor_workbench")
 
 	if workbench == false and
 	  (minetest.get_modpath("moreblocks") or minetest.get_modpath("stairs")) then
-		if xdecor.stairs_valid_def(def) then
-			xdecor_stairs_alternative("xdecor:"..name, def)
+		if workbench.stairs_valid_def(def) then
+			xdecor_stairs_alternative("workbench:"..name, def)
 		end
 	end
 end

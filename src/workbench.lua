@@ -1,15 +1,15 @@
-local workbench = {}
+
 local nodes = {}
 
 screwdriver = screwdriver or {}
 local min, ceil = math.min, math.ceil
-local S = minetest.get_translator("xdecor")
+local S = minetest.get_translator(workbench.modname)
 local FS = function(...) return minetest.formspec_escape(S(...)) end
 
 -- Nodes allowed to be cut
 -- Only the regular, solid blocks without metas or explosivity can be cut
 for node, def in pairs(minetest.registered_nodes) do
-	if xdecor.stairs_valid_def(def) then
+	if workbench.stairs_valid_def(def) then
 		nodes[#nodes + 1] = node
 	end
 end
@@ -37,7 +37,7 @@ workbench.defs = {
 local repairable_tools = {"pick", "axe", "shovel", "sword", "hoe", "armor", "shield"}
 
 local custom_repairable = {}
-function xdecor:register_repairable(item)
+function workbench:register_repairable(item)
 	custom_repairable[item] = true
 end
 
@@ -177,7 +177,7 @@ function workbench.allow_put(pos, listname, index, stack, player)
 	if (listname == "tool" and stack:get_wear() > 0 and
 		workbench:repairable(stackname)) or
 	   (listname == "input" and minetest.registered_nodes[stackname .. "_cube"]) or
-	   (listname == "hammer" and stackname == "xdecor:hammer") or
+	   (listname == "hammer" and stackname == "workbench:hammer") or
 	    listname == "storage" then
 		return stack:get_count()
 	end
@@ -241,7 +241,7 @@ function workbench.on_take(pos, listname, index, stack, player)
 	end
 end
 
-xdecor.register("workbench", {
+workbench.register("workbench", {
 	description = S("Work Bench"),
 	groups = {cracky = 2, choppy = 2, oddly_breakable_by_hand = 1},
 	sounds = default.node_sound_wood_defaults(),
@@ -307,7 +307,7 @@ for i = 1, #nodes do
 			tiles = tiles,
 			groups = groups,
 			-- `unpack` has been changed to `table.unpack` in newest Lua versions
-			node_box = xdecor.pixelbox(16, {unpack(d, 3)}),
+			node_box = workbench.pixelbox(16, {unpack(d, 3)}),
 			sunlight_propagates = true,
 			on_place = minetest.rotate_node
 		})
@@ -327,7 +327,7 @@ end
 
 -- Craft items
 
-minetest.register_tool("xdecor:hammer", {
+minetest.register_tool("workbench:hammer", {
 	description = S("Hammer"),
 	inventory_image = "xdecor_hammer.png",
 	wield_image = "xdecor_hammer.png",
@@ -339,7 +339,7 @@ minetest.register_tool("xdecor:hammer", {
 -- Recipes
 
 minetest.register_craft({
-	output = "xdecor:hammer",
+	output = "workbench:hammer",
 	recipe = {
 		{"default:steel_ingot", "group:stick", "default:steel_ingot"},
 		{"", "group:stick", ""}
@@ -347,9 +347,13 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "xdecor:workbench",
+	output = "workbench:workbench",
 	recipe = {
 		{"group:wood", "group:wood"},
 		{"group:wood", "group:wood"}
 	}
 })
+
+-- backward compat
+core.register_alias("xdecor:workbench", "workbench:workbench")
+core.register_alias("xdecor:hammer", "workbench:hammer")

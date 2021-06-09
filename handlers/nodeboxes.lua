@@ -1,4 +1,4 @@
-xdecor.box = {
+workbench.box = {
 	slab_y = function(height, shift)
 		return {
 			-0.5,
@@ -20,14 +20,14 @@ xdecor.box = {
 	end
 }
 
-xdecor.nodebox = {
+workbench.nodebox = {
 	regular = {type = "regular"},
 	null = {
 		type = "fixed", fixed = {0,0,0,0,0,0}
 	}
 }
 
-xdecor.pixelbox = function(size, boxes)
+workbench.pixelbox = function(size, boxes)
 	local fixed = {}
 	for _, box in ipairs(boxes) do
 		-- `unpack` has been changed to `table.unpack` in newest Lua versions.
@@ -48,7 +48,7 @@ end
 local mt = {}
 
 mt.__index = function(table, key)
-	local ref = xdecor.box[key]
+	local ref = workbench.box[key]
 	local ref_type = type(ref)
 
 	if ref_type == "function" then
@@ -64,4 +64,4 @@ mt.__index = function(table, key)
 	error("unexpected datatype " .. tostring(type(ref)) .. " while looking for " .. key)
 end
 
-setmetatable(xdecor.nodebox, mt)
+setmetatable(workbench.nodebox, mt)
