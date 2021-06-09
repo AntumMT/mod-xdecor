@@ -1,17 +1,23 @@
-## X-Decor ##
+## Work Bench
 
-[![ContentDB](https://content.minetest.net/packages/jp/xdecor/shields/downloads/)](https://content.minetest.net/packages/jp/xdecor/)
+### Description:
 
-A decoration mod meant to be simple and well-featured.
-It adds a bunch of cute cubes, various mechanisms and stuff for [cutting](https://forum.minetest.net/viewtopic.php?f=11&t=14085), [enchanting](https://forum.minetest.net/viewtopic.php?f=11&t=14087), cooking, etc.
-This mod is a lightweight alternative to HomeDecor and MoreBlocks.
+A work bench for [Minetest][], forked from the [xdecor mod](https://github.com/minetest-mods/xdecor).
 
-### Requirements ###
-This mod requires at least version 5.1 of Minetest.
+It can cut up to 12 shapes, repair your tools, craft items and store.
 
-### Credits ###
+![screenshot](screenshot.png)
 
-Special thanks to Gambit for the textures from the PixelBOX pack for Minetest.
-Thanks to all contributors who keep this mod alive.
+### Licensing:
 
-![Preview](http://i.imgur.com/AVoyCQy.png)
+- Code: [LGPL v3.0](LICENSE.txt)
+- Textures: [WTFPL](LICENSE.txt)
+
+### Links:
+
+- [Git repo](https://github.com/AntumMT/mod-workbench)
+- [Changelog](changelog.txt)
+- [TODO](TODO.txt)
+
+
+[Minetest]: http://minetest.net/
