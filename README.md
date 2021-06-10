@@ -10,7 +10,7 @@ It can cut up to 12 shapes, repair your tools, craft items and store.
 
 ### Licensing:
 
-- Code: [LGPL v3.0](LICENSE.txt)
+- Code: [BSD](LICENSE.txt)
 - Textures: [CC0](LICENSE.txt)
 
 ### Links:
