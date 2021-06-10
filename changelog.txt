@@ -6,3 +6,4 @@ v1.0
 - changed textures license to CC0
 - renamed mod to "workbench"
 - don't load if xdecor available & create aliases for compatibility
+- added method to register items as repairable
